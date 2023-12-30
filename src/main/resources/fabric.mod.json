@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "antihit",
+  "version": "${version}",
+  "name": "AntiHit",
+  "description": "A mod that adds a friend system.",
+  "icon": "assets/antihit/icon.png",
+  "authors": [
+    "Ciocolata47"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "me.cioco.antihit.FriendManager"
+    ]
+  },
+  "mixins": [
+    "antihit.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
