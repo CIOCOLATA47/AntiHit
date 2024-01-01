@@ -26,34 +26,37 @@ public class FriendManager implements ModInitializer {
 
     private static final List<String> friendsList = new ArrayList<>();
     private static final Path friendsListFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), "friend_list.json").toPath();
-
     private static KeyBinding addFriendKeyBinding;
-
     private static KeyBinding removeFriendKeyBinding;
-
     private static boolean allowAttacksOnFriends = false;
-
-    private static KeyBinding toggleFriendshipKeyBinding;
+    private static KeyBinding toggleFriendAttack;
+    private static KeyBinding removeAllFriends;
 
     @Override
     public void onInitialize() {
 
         addFriendKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.friendlist.addfriend",
+                "key.antihit.addfriend",
                 GLFW.GLFW_KEY_UNKNOWN,
-                "key.categories.friendlist"
+                "key.categories.antihit"
         ));
 
         removeFriendKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.friendlist.removefriend",
+                "key.antihit.removefriend",
                 GLFW.GLFW_KEY_UNKNOWN,
-                "key.categories.friendlist"
+                "key.categories.antihit"
         ));
 
-        toggleFriendshipKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.friendlist.togglefriendship",
+        toggleFriendAttack = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.antihit.togglefriendattack",
                 GLFW.GLFW_KEY_UNKNOWN,
-                "key.categories.friendlist"
+                "key.categories.antihit"
+        ));
+
+        removeAllFriends = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.antihit.removeallfriends",
+                GLFW.GLFW_KEY_UNKNOWN,
+                "key.categories.antihit"
         ));
 
         loadFriendsList();
@@ -75,14 +78,16 @@ public class FriendManager implements ModInitializer {
                     addFriend(target);
                 } else if (removeFriendKeyBinding.wasPressed()) {
                     removeFriend(target);
-                } else if (toggleFriendshipKeyBinding.wasPressed()) {
+                } else if (toggleFriendAttack.wasPressed()) {
                     allowAttacksOnFriends = !allowAttacksOnFriends;
                     String message = allowAttacksOnFriends ? "Attacks on friends are now allowed." : "Attacks on friends are now blocked.";
                     MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.of("§b" + message));
                 }
             }
+            if (removeAllFriends.wasPressed()) {
+                removeAllFriends();
+            }
         });
-
     }
 
     private static PlayerEntity getTargetedPlayer() {
@@ -120,6 +125,13 @@ public class FriendManager implements ModInitializer {
             String message = playerName + " is not added as a friend.";
             MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.of("§e" + message));
         }
+    }
+
+    private static void removeAllFriends() {
+        friendsList.clear();
+        String message = "Removed all friends.";
+        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.of("§c" + message));
+        saveFriendsList();
     }
 
     public static boolean isFriend(PlayerEntity player) {

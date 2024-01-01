@@ -1,7 +1,8 @@
 {
-  "key.categories.friendlist": "AntiHit",
-  "key.friendlist.addfriend": "Add friend",
-  "key.friendlist.removefriend": "Remove friend",
-  "key.friendlist.togglefriendship": "Toggle FriendAttack"
+  "key.categories.antihit": "AntiHit",
+  "key.antihit.addfriend": "Add friend",
+  "key.antihit.removefriend": "Remove friend",
+  "key.antihit.togglefriendattack": "Toggle FriendAttack",
+  "key.antihit.removeallfriends": "Remove all Friends"
 
 }

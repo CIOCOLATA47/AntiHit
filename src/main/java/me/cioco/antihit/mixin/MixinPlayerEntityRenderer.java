@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 @Mixin(PlayerEntityRenderer.class)
 public class MixinPlayerEntityRenderer {
     @ModifyArgs(method = "renderLabelIfPresent(Lnet/minecraft/client/network/AbstractClientPlayerEntity;Lnet/minecraft/text/Text;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/LivingEntityRenderer;renderLabelIfPresent(Lnet/minecraft/entity/Entity;Lnet/minecraft/text/Text;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", ordinal = 1))
-    public void renderCyanNameTag(Args args) {
+    public void renderGreenNameTag(Args args) {
         AbstractClientPlayerEntity entity = (AbstractClientPlayerEntity) args.get(0);
         Text originalText = (Text) args.get(1);
         boolean isFriend = FriendManager.isFriend(entity);
