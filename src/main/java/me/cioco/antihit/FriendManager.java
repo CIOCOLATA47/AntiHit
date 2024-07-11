@@ -1,6 +1,8 @@
 package me.cioco.antihit;
 
+import me.cioco.antihit.command.ChangeNameTagColor;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
@@ -60,6 +62,7 @@ public class FriendManager implements ModInitializer {
         ));
 
         loadFriendsList();
+        addCommands();
 
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (hand == Hand.MAIN_HAND && player != null && entity instanceof PlayerEntity) {
@@ -154,5 +157,10 @@ public class FriendManager implements ModInitializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void addCommands() {
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            ChangeNameTagColor.register(dispatcher);
+        });
     }
 }

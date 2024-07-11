@@ -8,7 +8,11 @@
   "authors": [
     "Ciocolata47"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/antihit",
+    "sources": "https://github.com/CIOCOLATA47/AntiHit",
+    "issues": "https://github.com/CIOCOLATA47/AntiHit/issues"
+  },
   "license": "All-Rights-Reserved",
   "environment": "client",
   "entrypoints": {
@@ -22,6 +26,6 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": ">=1.20.5"
   }
 }
