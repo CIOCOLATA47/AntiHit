@@ -1,33 +1,3 @@
 # AntiHit
 
-AntiHit is a Minecraft Fabric mod that allows players to manage a friends list.
-
-## Features
-
-
- **Attack Handling:**
-  - Choose whether attacks on friends are allowed or blocked.
-
-- **Key Bindings:**
-  - Configure key bindings for adding, removing friends,remove all friends and toggling attack friends settings.
-
-- **Configuration:**
-  - Friends list is stored in a JSON file (`friend_list.json`) in the config directory.
-
-## Usage
-
-### Adding a Friend
--Look at the player and press the configured key binding for adding a friend.
-
-### Removing a Friend
-- Look at the player and press the configured key binding for removing a friend.
-
-### Remove all friends
-- You will have a bind to remove all friends at once
-
-### Toggling Friend attack
-- Press the configured key binding to toggle between allowing and blocking attacks on friends.
-
-## Contributing
-
-Feel free to open issues or pull requests for bug fixes or improvements.
+If you encounter any bugs, issues, or have suggestions for improvements, please create a new issue or a pull request.
